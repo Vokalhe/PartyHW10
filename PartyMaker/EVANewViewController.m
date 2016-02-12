@@ -15,13 +15,19 @@
 
 @implementation EVANewViewController
 - (void)viewDidLoad {
+    UIBarButtonItem *repeat = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:
+                                UIBarButtonItemStylePlain target:self action:@selector
+                                (cancel)];
+    self.navigationItem.leftBarButtonItem = repeat;
+    self.buttonCancel = repeat;
+    [repeat  setTintColor:[UIColor blackColor]];
     [super viewDidLoad];
     [self newScrollViews];
     [self newDescription];
     [self newLineRight];
+    
     // Do any additional setup after loading the view from its nib.
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -65,6 +71,8 @@
 }
 
 #pragma mark - textField NAME!
+
+
 - (IBAction)actionYourPartyName:(UITextField *)sender {
     
     //[self.yourPartyName setReturnKeyType:UIReturnKeyDone];
@@ -73,7 +81,7 @@
 }
 - (BOOL) textFieldShouldReturn:(UITextField*) textField;{
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 136);
+        self.moving.center = CGPointMake(15, 140);
     }];
     self.yourPartyName = textField;
     [textField resignFirstResponder];
@@ -148,26 +156,34 @@
     
     for (int i = 0; i < 6; i++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%d", i]];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(190*i, 0, 190, 80)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(190*i, 10, 190, 60)];
         imageView.contentMode = UIViewContentModeScaleAspectFit;
         [imageView setImage:image];
         [scrollView addSubview:imageView];
     }
+    scrollView.delegate = self;
     self.viewScroll = scrollView;
     [self.view addSubview:scrollView];
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(120, 337, 190, 20)];
+    
+    
+    pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:(255/255) green:255/255 blue:255/255 alpha:1];
+    pageControl.pageIndicatorTintColor = [UIColor colorWithRed:29/255 green:31/255 blue:36/255 alpha:1];
     pageControl.numberOfPages = 6;
     pageControl.backgroundColor = [UIColor colorWithRed:68/255.f green:73/255.f blue:83/255.f alpha:1];
     [pageControl addTarget:self
-                    action:@selector(pageControl)
+                    action:@selector(onPageControlValueChanged:)
           forControlEvents:UIControlEventValueChanged];
     self.pageControl = pageControl;
     [self.view addSubview:pageControl];
-}
-- (void) pageControl:(UIPageControl *)sender {
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 301);
+        self.moving.center = CGPointMake(15, 304);
+    }];
+}
+- (void) onPageControlValueChanged:(UIPageControl *)sender {
+    [UIView animateWithDuration:0.3f animations:^{
+        self.moving.center = CGPointMake(15, 304);
     }];
     CGPoint contentOffset = CGPointMake(self.viewScroll.frame.size.width * self.pageControl.currentPage, 0);
     [self.viewScroll setContentOffset:contentOffset animated:YES];
@@ -175,7 +191,7 @@
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 301);
+        self.moving.center = CGPointMake(15, 304);
     }];
     NSInteger currentPage = self.viewScroll.contentOffset.x/self.viewScroll.frame.size.width;
     [self.pageControl setCurrentPage:currentPage];
@@ -196,34 +212,35 @@
     itemDone.tintColor = itemCancel.tintColor = [UIColor whiteColor];
     toolbar.items = @[itemCancel, flexibleSpace, itemDone];
     [toolbar sizeToFit];
-    self.viewDescription.inputAccessoryView = toolbar;
+    self.textDescription.inputAccessoryView = toolbar;
     
 }
 - (void) buttonCancelOnDescription{
-    self.viewDescription.text = self.textDescription.text;
-    [self.viewDescription resignFirstResponder];
+    self.textDescription.text = self.textDescription.text;
+    [self.textDescription resignFirstResponder];
 }
 
 
 - (void) buttonDoneOnDescription{
     
-    [self.viewDescription resignFirstResponder];
+    [self.textDescription resignFirstResponder];
 }
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView{
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 423.5);
+        self.moving.center = CGPointMake(15, 447);
     }];
     return YES;
 }
 
 
 - (BOOL) textViewShouldEndEditing:(UITextView *)textView{
-    self.textDescription.text = self.viewDescription.text;
+    self.textDescription.text = self.textDescription.text;
     return YES;
     
 }
 -(void)keyboardWillShow:(NSNotification*)notification{
+    if (!self.isKeyBoardShowed){
     if(self.textDescription.isFirstResponder){
         CGRect keyboardRect =
         [[[notification userInfo]
@@ -233,21 +250,23 @@
           objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
         [UIView animateWithDuration:duration animations:^{
             CGRect viewFrame = self.view.frame;
-            viewFrame.origin.y -= keyboardRect.size.height;
+            viewFrame.origin.y -= keyboardRect.size.height - 45;
             self.view.frame = viewFrame;
         }];
     } else{
         return;
+    }
+        self.isKeyBoardShowed = YES;
     }
 }
 -(void)keyboardWillHide:(NSNotification*)notification{
     float duration = [[[notification userInfo]
                        objectForKey:UIKeyboardAnimationDurationUserInfoKey]
                       floatValue];
-    
+    self.isKeyBoardShowed = NO;
     [UIView animateWithDuration:duration animations:^{
         CGRect viewFrame = self.view.frame;
-        viewFrame.origin.y = 64;
+        viewFrame.origin.y = 0;
         self.view.frame = viewFrame;
     }];
 }
@@ -267,7 +286,11 @@
 #pragma mark - Last buttons, Cancel and Save!
 - (IBAction)actionChooseLocation:(UIButton *)sender {
     NSLog(@"Ukraine");
+    [UIView animateWithDuration:0.3f animations:^{
+        self.moving.center = CGPointMake(15, 543);
+    }];
 }
+
 #pragma mark - BIG Line!!!
 
 -(void) newLineRight{
@@ -285,16 +308,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 
 @end
+
+
+
 

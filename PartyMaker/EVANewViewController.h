@@ -17,19 +17,24 @@
 @property (weak, nonatomic) IBOutlet UISlider *sliderEnd;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimeStart;
 @property (weak, nonatomic) IBOutlet UILabel *labelTimeEnd;
-@property (weak, nonatomic) IBOutlet UIScrollView *viewScroll;
+@property (weak, nonatomic) UIScrollView *viewScroll;
 @property (weak, nonatomic) IBOutlet UITextView *textDescription;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) UIPageControl *pageControl;
 @property (nonatomic) UIToolbar *toolBar;
 @property (nonatomic) UIDatePicker *datePicker;
 @property (nonatomic) UIView* moving;
 @property (nonatomic) NSDate* pickerDate;
 @property (nonatomic) UITextView *viewDescription;
+@property (nonatomic) BOOL isKeyBoardShowed;
+
+
+@property (nonatomic) UIBarButtonItem* buttonCancel;
 
 - (IBAction)actionYourPartyName:(UITextField *)sender;
 - (IBAction)actionSliderStart:(UISlider *)sender;
 - (IBAction)actionSliderEnd:(UISlider *)sender;
 
 - (IBAction)actionChooseLocation:(UIButton *)sender;
+
 - (IBAction)actionChooseDate:(UIButton *)sender;
 @end

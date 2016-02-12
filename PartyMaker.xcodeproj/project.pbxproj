@@ -15,7 +15,6 @@
 		8338A9041C649A96005B3A04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8338A9021C649A96005B3A04 /* LaunchScreen.storyboard */; };
 		8338A90F1C649A96005B3A04 /* PartyMakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338A90E1C649A96005B3A04 /* PartyMakerTests.m */; };
 		8338A91A1C649A96005B3A04 /* PartyMakerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338A9191C649A96005B3A04 /* PartyMakerUITests.m */; };
-		8338A9291C649BCC005B3A04 /* EVAVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338A9281C649BCC005B3A04 /* EVAVCViewController.m */; };
 		8344430A1C69EFD400E73D02 /* MyriadProBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834443081C69EFD400E73D02 /* MyriadProBold.ttf */; };
 		8344430B1C69EFD400E73D02 /* MyriadProBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834443081C69EFD400E73D02 /* MyriadProBold.ttf */; };
 		8344430C1C69EFD400E73D02 /* MyriadProBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834443081C69EFD400E73D02 /* MyriadProBold.ttf */; };
@@ -68,8 +67,6 @@
 		8338A9151C649A96005B3A04 /* PartyMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PartyMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8338A9191C649A96005B3A04 /* PartyMakerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartyMakerUITests.m; sourceTree = "<group>"; };
 		8338A91B1C649A96005B3A04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8338A9271C649BCC005B3A04 /* EVAVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVAVCViewController.h; sourceTree = "<group>"; };
-		8338A9281C649BCC005B3A04 /* EVAVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVAVCViewController.m; sourceTree = "<group>"; };
 		834443081C69EFD400E73D02 /* MyriadProBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyriadProBold.ttf; sourceTree = "<group>"; };
 		834443091C69EFD400E73D02 /* MyriadProRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MyriadProRegular.ttf; sourceTree = "<group>"; };
 		834443101C6A3A1400E73D02 /* party.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = party.plist; sourceTree = "<group>"; };
@@ -138,8 +135,11 @@
 		83308FE91C6C718E007B80CE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8338A9271C649BCC005B3A04 /* EVAVCViewController.h */,
-				8338A9281C649BCC005B3A04 /* EVAVCViewController.m */,
+				8338A8FA1C649A96005B3A04 /* EVAViewController.h */,
+				8338A8FB1C649A96005B3A04 /* EVAViewController.m */,
+				83308FEA1C6C7228007B80CE /* EVANewViewController.h */,
+				83308FEB1C6C7228007B80CE /* EVANewViewController.m */,
+				84742AEE1C6D3E53004BE14F /* EVANewViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -171,15 +171,10 @@
 				83308FE81C6C7170007B80CE /* Storyboards */,
 				83308FE71C6C7157007B80CE /* Models */,
 				83308FE61C6C7141007B80CE /* Fonts */,
-				8338A8FA1C649A96005B3A04 /* EVAViewController.h */,
-				8338A8FB1C649A96005B3A04 /* EVAViewController.m */,
 				8338A8F71C649A96005B3A04 /* EVAAppDelegate.h */,
 				8338A8F81C649A96005B3A04 /* EVAAppDelegate.m */,
 				84742AF21C6D45F7004BE14F /* Assets.xcassets */,
 				8338A8F41C649A96005B3A04 /* Supporting Files */,
-				83308FEA1C6C7228007B80CE /* EVANewViewController.h */,
-				83308FEB1C6C7228007B80CE /* EVANewViewController.m */,
-				84742AEE1C6D3E53004BE14F /* EVANewViewController.xib */,
 			);
 			path = PartyMaker;
 			sourceTree = "<group>";
@@ -274,6 +269,10 @@
 		8338A8E91C649A96005B3A04 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					Cancel,
+					asdasd,
+				);
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = 1;
 				TargetAttributes = {
@@ -356,7 +355,6 @@
 				84DF1DD31C69685D00EE004D /* NSString+TimeOfSlider.m in Sources */,
 				834443161C6A3A3000E73D02 /* EVAParty.m in Sources */,
 				8338A8FC1C649A96005B3A04 /* EVAViewController.m in Sources */,
-				8338A9291C649BCC005B3A04 /* EVAVCViewController.m in Sources */,
 				8338A8F91C649A96005B3A04 /* EVAAppDelegate.m in Sources */,
 				8338A8F61C649A96005B3A04 /* main.m in Sources */,
 			);
