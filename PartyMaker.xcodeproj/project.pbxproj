@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		83308FED1C6C7228007B80CE /* EVANewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83308FEB1C6C7228007B80CE /* EVANewViewController.m */; };
-		83308FEE1C6C7228007B80CE /* EVANewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83308FEC1C6C7228007B80CE /* EVANewViewController.xib */; };
 		8338A8F61C649A96005B3A04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338A8F51C649A96005B3A04 /* main.m */; };
 		8338A8F91C649A96005B3A04 /* EVAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338A8F81C649A96005B3A04 /* EVAAppDelegate.m */; };
 		8338A8FC1C649A96005B3A04 /* EVAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338A8FB1C649A96005B3A04 /* EVAViewController.m */; };
 		8338A8FF1C649A96005B3A04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8338A8FD1C649A96005B3A04 /* Main.storyboard */; };
-		8338A9011C649A96005B3A04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8338A9001C649A96005B3A04 /* Assets.xcassets */; };
 		8338A9041C649A96005B3A04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8338A9021C649A96005B3A04 /* LaunchScreen.storyboard */; };
 		8338A90F1C649A96005B3A04 /* PartyMakerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338A90E1C649A96005B3A04 /* PartyMakerTests.m */; };
 		8338A91A1C649A96005B3A04 /* PartyMakerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8338A9191C649A96005B3A04 /* PartyMakerUITests.m */; };
@@ -30,6 +28,8 @@
 		834443161C6A3A3000E73D02 /* EVAParty.m in Sources */ = {isa = PBXBuildFile; fileRef = 834443151C6A3A3000E73D02 /* EVAParty.m */; };
 		834443171C6A3A3000E73D02 /* EVAParty.m in Sources */ = {isa = PBXBuildFile; fileRef = 834443151C6A3A3000E73D02 /* EVAParty.m */; };
 		834443181C6A3A3000E73D02 /* EVAParty.m in Sources */ = {isa = PBXBuildFile; fileRef = 834443151C6A3A3000E73D02 /* EVAParty.m */; };
+		84742AEF1C6D3E53004BE14F /* EVANewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84742AEE1C6D3E53004BE14F /* EVANewViewController.xib */; };
+		84742AF31C6D45F7004BE14F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84742AF21C6D45F7004BE14F /* Assets.xcassets */; };
 		84DF1DD31C69685D00EE004D /* NSString+TimeOfSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF1DD21C69685D00EE004D /* NSString+TimeOfSlider.m */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,6 @@
 /* Begin PBXFileReference section */
 		83308FEA1C6C7228007B80CE /* EVANewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVANewViewController.h; sourceTree = "<group>"; };
 		83308FEB1C6C7228007B80CE /* EVANewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVANewViewController.m; sourceTree = "<group>"; };
-		83308FEC1C6C7228007B80CE /* EVANewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EVANewViewController.xib; path = "/Users/a2/Desktop/party-master10/PartyMaker/EVANewViewController.xib"; sourceTree = "<absolute>"; };
 		8338A8F11C649A96005B3A04 /* PartyMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PartyMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8338A8F51C649A96005B3A04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8338A8F71C649A96005B3A04 /* EVAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EVAAppDelegate.h; sourceTree = "<group>"; };
@@ -61,7 +60,6 @@
 		8338A8FA1C649A96005B3A04 /* EVAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EVAViewController.h; sourceTree = "<group>"; };
 		8338A8FB1C649A96005B3A04 /* EVAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EVAViewController.m; sourceTree = "<group>"; };
 		8338A8FE1C649A96005B3A04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8338A9001C649A96005B3A04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8338A9031C649A96005B3A04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8338A9051C649A96005B3A04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8338A90A1C649A96005B3A04 /* PartyMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PartyMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +75,8 @@
 		834443101C6A3A1400E73D02 /* party.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = party.plist; sourceTree = "<group>"; };
 		834443141C6A3A3000E73D02 /* EVAParty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EVAParty.h; sourceTree = "<group>"; };
 		834443151C6A3A3000E73D02 /* EVAParty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EVAParty.m; sourceTree = "<group>"; };
+		84742AEE1C6D3E53004BE14F /* EVANewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EVANewViewController.xib; sourceTree = "<group>"; };
+		84742AF21C6D45F7004BE14F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		84DF1DD11C69685D00EE004D /* NSString+TimeOfSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TimeOfSlider.h"; sourceTree = "<group>"; };
 		84DF1DD21C69685D00EE004D /* NSString+TimeOfSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TimeOfSlider.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,11 +175,11 @@
 				8338A8FB1C649A96005B3A04 /* EVAViewController.m */,
 				8338A8F71C649A96005B3A04 /* EVAAppDelegate.h */,
 				8338A8F81C649A96005B3A04 /* EVAAppDelegate.m */,
-				8338A9001C649A96005B3A04 /* Assets.xcassets */,
+				84742AF21C6D45F7004BE14F /* Assets.xcassets */,
 				8338A8F41C649A96005B3A04 /* Supporting Files */,
 				83308FEA1C6C7228007B80CE /* EVANewViewController.h */,
 				83308FEB1C6C7228007B80CE /* EVANewViewController.m */,
-				83308FEC1C6C7228007B80CE /* EVANewViewController.xib */,
+				84742AEE1C6D3E53004BE14F /* EVANewViewController.xib */,
 			);
 			path = PartyMaker;
 			sourceTree = "<group>";
@@ -318,9 +318,9 @@
 				8338A9041C649A96005B3A04 /* LaunchScreen.storyboard in Resources */,
 				834443111C6A3A1400E73D02 /* party.plist in Resources */,
 				8344430A1C69EFD400E73D02 /* MyriadProBold.ttf in Resources */,
-				8338A9011C649A96005B3A04 /* Assets.xcassets in Resources */,
-				83308FEE1C6C7228007B80CE /* EVANewViewController.xib in Resources */,
+				84742AEF1C6D3E53004BE14F /* EVANewViewController.xib in Resources */,
 				8338A8FF1C649A96005B3A04 /* Main.storyboard in Resources */,
+				84742AF31C6D45F7004BE14F /* Assets.xcassets in Resources */,
 				8344430D1C69EFD400E73D02 /* MyriadProRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

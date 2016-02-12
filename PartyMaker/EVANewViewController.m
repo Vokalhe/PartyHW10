@@ -10,37 +10,15 @@
 #import "NSString+TimeOfSlider.h"
 #import "EVAParty.h"
 @interface EVANewViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *buttonChooseDate;
-@property (weak, nonatomic) IBOutlet UITextField *yourPartyName;
-@property (weak, nonatomic) IBOutlet UIButton *buttonChooseLocation;
-@property (weak, nonatomic) IBOutlet UISlider *sliderSrart;
-@property (weak, nonatomic) IBOutlet UISlider *sliderEnd;
-@property (weak, nonatomic) IBOutlet UILabel *labelTimeStart;
-@property (weak, nonatomic) IBOutlet UILabel *labelTimeEnd;
-@property (weak, nonatomic) IBOutlet UIScrollView *viewScroll;
-@property (weak, nonatomic) IBOutlet UITextView *textDescription;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
- @property (nonatomic) UIToolbar *toolBar;
-@property (nonatomic) UIDatePicker *datePicker;
- @property (nonatomic) UIView* moving;
-@property (nonatomic) NSDate* pickerDate;
-@property (nonatomic) UITextView *viewDescription;
 
 @end
-/*
- 
- 
- 
 
- @property (nonatomic) UIView* line;
-
- 
- @property (nonatomic) UIButton *buttonCancel;
- @property (nonatomic) UIButton *buttonSave;
- */
 @implementation EVANewViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self newScrollViews];
+    [self newDescription];
+    [self newLineRight];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -48,29 +26,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)viewDidAppear:(BOOL)animated{
-    
-        [super viewDidAppear:animated];
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(keyboardWillShow:)
-         name:UIKeyboardWillShowNotification
-         object:nil];
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector: @selector(keyboardWillHide:)
-         name:UIKeyboardWillHideNotification
-         object:nil];
-        
-    
 
-}
 #pragma mark - Button CHOOSE DATE!
 - (IBAction)actionChooseDate:(UIButton *)sender {
-    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame: CGRectMake(0, 345.5, 320, 158.5)];
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame: CGRectMake(0, 409.5, 320, 158.5)];
     datePicker.backgroundColor = [UIColor whiteColor];
     datePicker.datePickerMode = UIDatePickerModeDateAndTime;
-    UIToolbar* toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 309.5, 320, 36)];
+    UIToolbar* toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 373.5, 320, 36)];
     toolbar.barStyle = UIBarStyleBlack;
     toolbar.backgroundColor = [UIColor colorWithRed:68/255.f green:73/255.f blue:83/255.f alpha:1];
     UIBarButtonItem* editCancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(Cancel)];
@@ -85,9 +47,9 @@
     [self.view addSubview:toolbar];
     
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 27);
+        self.moving.center = CGPointMake(15, 91);
     }];
-
+    
 }
 -(void) Cancel{
     [self.toolBar removeFromSuperview];
@@ -104,12 +66,16 @@
 
 #pragma mark - textField NAME!
 - (IBAction)actionYourPartyName:(UITextField *)sender {
-    [self.yourPartyName setReturnKeyType:UIReturnKeyDone];
+    
+    //[self.yourPartyName setReturnKeyType:UIReturnKeyDone];
+    [self.view endEditing:YES];
+    
 }
 - (BOOL) textFieldShouldReturn:(UITextField*) textField;{
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 76);
+        self.moving.center = CGPointMake(15, 136);
     }];
+    self.yourPartyName = textField;
     [textField resignFirstResponder];
     return YES;
 }
@@ -160,13 +126,13 @@
 }
 - (void) startsSliderTouched{
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 123.5);
+        self.moving.center = CGPointMake(15, 187.5);
     }];
 }
 
 - (void) endSliderTouched{
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 164.5);
+        self.moving.center = CGPointMake(15, 228.5);
     }];
 }
 
@@ -174,12 +140,12 @@
 
 #pragma mark - IMAGE!
 - (void) newScrollViews{
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(120, 191.5, 190, 100)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(120, 255.5, 190, 100)];
     scrollView.backgroundColor = [UIColor colorWithRed:68/255.f green:73/255.f blue:83/255.f alpha:1];
     scrollView.pagingEnabled = YES;
     scrollView.contentSize = CGSizeMake(190*6, 100);
     scrollView.layer.cornerRadius = 3.0f;
-    //scrollView.delegate = self;
+    
     for (int i = 0; i < 6; i++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"PartyLogo_Small_%d", i]];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(190*i, 0, 190, 80)];
@@ -190,18 +156,18 @@
     self.viewScroll = scrollView;
     [self.view addSubview:scrollView];
     
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(120, 273, 190, 20)];
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(120, 337, 190, 20)];
     pageControl.numberOfPages = 6;
     pageControl.backgroundColor = [UIColor colorWithRed:68/255.f green:73/255.f blue:83/255.f alpha:1];
     [pageControl addTarget:self
-                    action:@selector(actionPageControl)
+                    action:@selector(pageControl)
           forControlEvents:UIControlEventValueChanged];
     self.pageControl = pageControl;
     [self.view addSubview:pageControl];
 }
-- (IBAction)actionPageControl:(UIPageControl *)sender {
+- (void) pageControl:(UIPageControl *)sender {
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 241);
+        self.moving.center = CGPointMake(15, 301);
     }];
     CGPoint contentOffset = CGPointMake(self.viewScroll.frame.size.width * self.pageControl.currentPage, 0);
     [self.viewScroll setContentOffset:contentOffset animated:YES];
@@ -209,15 +175,15 @@
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 241);
+        self.moving.center = CGPointMake(15, 301);
     }];
     NSInteger currentPage = self.viewScroll.contentOffset.x/self.viewScroll.frame.size.width;
     [self.pageControl setCurrentPage:currentPage];
     
 }
 #pragma mark - Description!!!
--(void) newDescription{
-    UIToolbar* toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 375, 50)];
+-(void) newDescription{/////
+    UIToolbar* toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetMaxX(self.view.bounds), 50)];
     toolbar.barStyle = UIBarStyleBlackOpaque;
     toolbar.backgroundColor = [UIColor colorWithRed:68/255.f green:73/255.f blue:83/255.f alpha:1];
     
@@ -246,10 +212,11 @@
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView{
     [UIView animateWithDuration:0.3f animations:^{
-        self.moving.center = CGPointMake(15, 359.5);
+        self.moving.center = CGPointMake(15, 423.5);
     }];
     return YES;
 }
+
 
 - (BOOL) textViewShouldEndEditing:(UITextView *)textView{
     self.textDescription.text = self.viewDescription.text;
@@ -257,7 +224,7 @@
     
 }
 -(void)keyboardWillShow:(NSNotification*)notification{
-    if(self.viewDescription.isFirstResponder){
+    if(self.textDescription.isFirstResponder){
         CGRect keyboardRect =
         [[[notification userInfo]
           objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -284,38 +251,49 @@
         self.view.frame = viewFrame;
     }];
 }
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(keyboardWillShow:)
+     name:UIKeyboardDidShowNotification
+     object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector: @selector(keyboardWillHide:)
+     name:UIKeyboardWillHideNotification
+     object:nil];
+}
 #pragma mark - Last buttons, Cancel and Save!
 - (IBAction)actionChooseLocation:(UIButton *)sender {
-    NSLog(@"Ukrine");
+    NSLog(@"Ukraine");
 }
 #pragma mark - BIG Line!!!
 
 -(void) newLineRight{
-UIView *moving = [[UIView alloc] initWithFrame:CGRectMake(15, 27, 14, 14)];
-moving.center = CGPointMake(15, 27);
-moving.layer.cornerRadius = 7.5f;
-moving.backgroundColor = [UIColor colorWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1];
-[moving.layer setBorderWidth: 2];
-[moving.layer setBorderColor:[UIColor colorWithRed:107/255.f green:107/255.f blue:108/255.f alpha:1].CGColor];
-self.moving = moving;
-[self.view addSubview:moving];
-    
-
-
+    UIView *moving = [[UIView alloc] initWithFrame:CGRectMake(15, 91, 14, 14)];
+    moving.center = CGPointMake(15, 91);
+    moving.layer.cornerRadius = 7.5f;
+    moving.backgroundColor = [UIColor colorWithRed:230/255.f green:224/255.f blue:213/255.f alpha:1];
+    [moving.layer setBorderWidth: 2];
+    [moving.layer setBorderColor:[UIColor colorWithRed:107/255.f green:107/255.f blue:108/255.f alpha:1].CGColor];
+    self.moving = moving;
+    [self.view addSubview:moving];
 }
 
-
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 @end
