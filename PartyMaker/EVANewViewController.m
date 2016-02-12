@@ -15,13 +15,13 @@
 
 @implementation EVANewViewController
 - (void)viewDidLoad {
+    [super viewDidLoad];
     UIBarButtonItem *repeat = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:
                                 UIBarButtonItemStylePlain target:self action:@selector
-                                (cancel)];
+                                (buttonCancel)];
     self.navigationItem.leftBarButtonItem = repeat;
-    self.buttonCancel = repeat;
     [repeat  setTintColor:[UIColor blackColor]];
-    [super viewDidLoad];
+    
     [self newScrollViews];
     [self newDescription];
     [self newLineRight];
@@ -87,48 +87,44 @@
     [textField resignFirstResponder];
     return YES;
 }
+
 #pragma mark - sliders Time!
+
 - (IBAction)actionSliderStart:(UISlider *)sender {
-    self.labelTimeStart.text = @"00:00";
+    //self.labelTimeStart.text = @"00:00";
     [self.sliderSrart addTarget:self action:@selector(startsSliderChanged) forControlEvents:UIControlEventValueChanged];
     [self.sliderSrart addTarget:self action:@selector(startsSliderTouched) forControlEvents:UIControlEventValueChanged];
 }
 - (IBAction)actionSliderEnd:(UISlider *)sender {
-    self.labelTimeEnd.text = @"00:30";
+  //  self.labelTimeEnd.text = @"00:30";
     [self.sliderEnd addTarget:self action:@selector(endSliderChanged) forControlEvents:UIControlEventValueChanged];
     [self.sliderEnd addTarget:self action:@selector(endSliderTouched) forControlEvents:UIControlEventValueChanged];
 }
 - (void) startsSliderChanged{
-    int valueInMinutes = self.sliderSrart.value * 1409;
     
-    
-    if (self.sliderSrart.value - self.sliderEnd.value > 0){
-        self.sliderEnd.value = self.sliderSrart.value;
-        self.labelTimeStart.text = [NSString convertAll:[NSString stringWithFormat:@"%i", valueInMinutes]];
-        self.labelTimeEnd.text = [NSString convertAll:[NSString stringWithFormat:@"%i", valueInMinutes + 30]];
+    if (self.sliderSrart.value > self.sliderEnd.value - 30){
+        self.sliderEnd.value = self.sliderSrart.value + 30;
+        self.labelTimeEnd.text = [NSString convertAll:[NSString stringWithFormat:@"%f", self.sliderEnd.value] ];
+        self.labelTimeStart.text = [NSString convertAll:[NSString stringWithFormat:@"%f", self.sliderSrart.value]];
+    }
+        else{
+            self.labelTimeEnd.text = [NSString convertAll:[NSString stringWithFormat:@"%f", self.sliderEnd.value]];
+            self.labelTimeStart.text = [NSString convertAll:[NSString stringWithFormat:@"%f", self.sliderSrart.value] ];
+        }
         
+    }
+
+- (void) endSliderChanged{
+
+    if (self.sliderEnd.value > self.sliderSrart.value + 30){
+        
+        self.labelTimeEnd.text = [NSString convertAll:[NSString stringWithFormat:@"%f", self.sliderEnd.value]];
+        self.labelTimeStart.text = [NSString convertAll:[NSString stringWithFormat:@"%f", self.sliderSrart.value]];
     }
     else{
-        self.sliderSrart.value = self.sliderEnd.value;
-        self.labelTimeStart.text = [NSString convertAll:[NSString stringWithFormat:@"%i", valueInMinutes]];
-        self.labelTimeEnd.text = [NSString convertAll:[NSString stringWithFormat:@"%i", valueInMinutes + 30]];
-        
-    }
-}
-- (void) endSliderChanged{
-    int valueInMinutes = self.sliderEnd.value * 1439;
-    if (self.sliderSrart.value - self.sliderEnd.value > 0){
-        self.sliderSrart.value = self.sliderEnd.value;
-        self.labelTimeEnd.text = [NSString convertAll:[NSString stringWithFormat:@"%i", valueInMinutes]];
-        self.labelTimeStart.text = [NSString convertAll:[NSString stringWithFormat:@"%i", valueInMinutes - 30]];
-        
-    }
-    else {
-        
-        self.sliderSrart.value = self.sliderEnd.value;
-        self.labelTimeStart.text = [NSString convertAll:[NSString stringWithFormat:@"%i", valueInMinutes - 30]];
-        self.labelTimeEnd.text = [NSString convertAll:[NSString stringWithFormat:@"%i", valueInMinutes]];
-        
+        self.sliderSrart.value = self.sliderEnd.value - 30;
+        self.labelTimeEnd.text = [NSString convertAll:[NSString stringWithFormat:@"%f", self.sliderEnd.value]];
+        self.labelTimeStart.text = [NSString convertAll:[NSString stringWithFormat:@"%f", self.sliderSrart.value]];
     }
     
 }
@@ -308,8 +304,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark - Cancel!
 
-
+-(void) buttonCancel{
+    
+   [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
 @end
 
 

@@ -28,7 +28,6 @@
 @property (nonatomic) BOOL isKeyBoardShowed;
 
 
-@property (nonatomic) UIBarButtonItem* buttonCancel;
 
 - (IBAction)actionYourPartyName:(UITextField *)sender;
 - (IBAction)actionSliderStart:(UISlider *)sender;

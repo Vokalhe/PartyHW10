@@ -102,7 +102,7 @@
                     <rect key="frame" x="273" y="214" width="40" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="OTH-To-Q2s">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1409" id="OTH-To-Q2s">
                     <rect key="frame" x="173" y="171" width="140" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="minimumTrackTintColor" red="0.4823529411764706" green="0.69019607843137254" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
@@ -111,7 +111,7 @@
                         <action selector="actionSliderStart:" destination="-1" eventType="valueChanged" id="58d-nN-p0D"/>
                     </connections>
                 </slider>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="wKy-iK-hsn">
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="30" maxValue="1439" id="wKy-iK-hsn">
                     <rect key="frame" x="120" y="214" width="140" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="minimumTrackTintColor" red="0.4823529411764706" green="0.69019607843137254" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
